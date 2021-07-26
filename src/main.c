@@ -39,15 +39,17 @@ bool check_login(char* login)
 
     while (fgets(c, BUFF_SIZE, file) != NULL)
         c_index = strstr(c, login);
-    
-    for (int i = 0; i < login_length; i++) 
-        login_exist[i] = c_index[i];
-    
-    if (strcmp(login_exist, login) == 0)
-        login_checked = true;
-    else
-        login_checked = false;
 
+    if (c_index == NULL) {
+        login_checked = false;
+    } else {
+        for (int i = 0; i < login_length; i++) 
+            login_exist[i] = c_index[i];
+         if (strcmp(login_exist, login) == 0)
+            login_checked = true;
+         else if (strcmp(login_exist, login) == 1)
+             login_checked = false;
+    }
     return login_checked;
 
 }
@@ -66,7 +68,7 @@ void sign_up()
 
     if (check_login(login) == true) {
         printf("\nRegistration not completed!\nLogin already exists!\n");
-    } else {
+    } else if (check_login(login) == false) {
         create_database(login, password);
         printf("\nRegistration completed successfully!\n");
     }
@@ -78,6 +80,5 @@ void sign_up()
 int main()
 {
     sign_up();
-    //printf("%d", check_login("a2p1k03"));
     return 0;
 }
