@@ -29,7 +29,7 @@ bool check_login(char* login)
     FILE* file;
     file = fopen("database.txt", "r");
 
-    int login_length = strlen(login);
+    size_t login_length = strlen(login);
     char* c_index;
     char login_exist[login_length];
     
@@ -63,21 +63,19 @@ void sign_up()
 
     char* password = readline("Password: ");
     add_history(password);
-    
-    //bool login_checked = check_login(login);
 
-    //if (check_login(login) == true) {
-    //    printf("\nRegistration not completed!\nLogin already exists!\n");
-    //} else {
-    create_database(login, password);
-    printf("\nRegistration completed successfully!\n");
-    //}
+    if (check_login(login) == true) {
+        printf("\nRegistration not completed!\nLogin already exists!\n");
+    } else {
+        create_database(login, password);
+        printf("\nRegistration completed successfully!\n");
+    }
 
     free(login);
     free(password);
 }
 
-main()
+int main()
 {
     sign_up();
     //printf("%d", check_login("a2p1k03"));
