@@ -1,1 +1,2 @@
-|Login          |Password              |
+|Login          |Password           |
+|---------------+-------------------|

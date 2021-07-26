@@ -9,10 +9,11 @@ void create_database(char login[], char password[])
     FILE* file;
     file = fopen("database.txt", "a");
 
-    fputs("\nLogin:\t\t\t", file);
+    fputs("|", file);
     fputs(login, file);
-    fputs("\nPassword:\t\t", file);
+    fputs("\t\t|", file);
     fputs(password, file);
+    fputs("\t\t\t\t|\n", file);
 
     fclose(file);
 }
