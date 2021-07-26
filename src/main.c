@@ -39,26 +39,8 @@ void sign_up()
     free(password);
 }
 
-void sign_in()
-{
-    printf("\t\t\tSign In\n");
-}
-
 main()
 {
-    printf("What you need?\n1 - Sign Up\n2 - Sign In\n");
-    int choice;
-    printf("> ");
-    scanf("%d", &choice);
-
-    switch (choice) {
-    case 1:
-        sign_up();
-        break;
-     case 2:
-        sign_in();
-        break;
-    }
-
+    sign_up();
     return 0;
 }
