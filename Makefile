@@ -1,5 +1,5 @@
-CC=tcc
-CFLAGS=-Wall
+CC=gcc
+CFLAGS=-Wall -ledit
 SOURCES=src/main.c
 EXECUTABLE=registration
 
