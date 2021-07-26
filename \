@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <editline/readline.h>
+
+typedef enum {
+    false = 0,
+    true = 1,
+}bool;
+
+void create_database(char* login, char* password)
+{
+    FILE* file;
+    file = fopen("database.txt", "a");
+
+    fputs("|", file);
+    fputs(login, file);
+    fputs("\t\t|", file);
+    fputs(password, file);
+    fputs("\t\t\t\t|\n", file);
+
+    fclose(file);
+}
+
+bool check_login(char* login)
+{
+    FILE* file;
+    file = fopen("database.txt", "r");
+
+    char login_exist[50];
+
+    while (fgets(login_exist, sizeof login_exist, file)) {
+        printf("%s", login_exist);
+    }
+}
+
+void sign_up()
+{
+    printf("\nSign Up\n\n");
+
+    char* login = readline("Login: ");
+    add_history(login);
+
+    printf("\n");
+
+    char* password = readline("Password: ");
+    add_history(password);
+    
+    bool login_checked = check_login(login);
+
+    if (login_checked == true) {
+        printf("\nRegistration not completed!\nLogin already exists!\n");
+    } else {
+        create_database(login, password);
+        printf("\nRegistration completed successfully!\n");
+    }
+
+    free(login);
+    free(password);
+}
+
+main()
+{
+    //sign_up();
+
+    printf("%d", check_login("a2p1k02"));
+
+    return 0;
+}
