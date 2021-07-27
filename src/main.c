@@ -45,10 +45,10 @@ bool check_login(char* login)
     } else {
         for (int i = 0; i < login_length; i++) 
             login_exist[i] = c_index[i];
-         if (strcmp(login_exist, login) == 0)
+        if (strcmp(login_exist, login) == 0)
             login_checked = true;
-         else if (strcmp(login_exist, login) == 1)
-             login_checked = false;
+        else if (strcmp(login_exist, login) == 1)
+            login_checked = false;
     }
     return login_checked;
 
